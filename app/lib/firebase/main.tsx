@@ -1,12 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
   apiKey: "AIzaSyA1gPd-iF1qVrJQlEHqSVdg6UBYtL2coZ8",
   authDomain: "revenue-routeaw.firebaseapp.com",
@@ -18,51 +15,41 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
 
 // Create a Google provider object
-const provider = new GoogleAuthProvider();
+const googleAuth = new GoogleAuthProvider();
 
 // Function to handle Google sign-in
-const signInWithGoogle = async () => {
+export const signInWithGoogle = async () => {
   try {
     // Sign in with the Google provider
-    const result = await signInWithPopup(auth, provider);
+    const res = await signInWithPopup(auth, googleAuth);
     // The signed-in user info
-    const user = result.user;
-    // ...
-  } catch (error : any) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+    return res.user;
+    } catch (error: any) {
+    alert(error.code + " " + error.message);
   }
 };
 
 // check if user is authenticated, make a function which is called in page.tsx
 // if authenticated, show user profile and logout
 // if not authenticated, show login and signup
-export const checkAuth = () => {
+export const checkAuth = (): any => {
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in
-      const uid = user.uid;
-      console.log('User is signed in');
-    } else {
-      // User is signed out
-      console.log('User is signed out');
-    }
+  return user;
   });
 };
 
-const signInButton = document.getElementById('signInButton');
-signInButton.addEventListener('click', signInWithGoogle);
+export const signOutUser = async () => {
+  try {
+    await signOut(auth);
+  } catch (error: any) {
+    alert(error.code + error.message);
+  }
+};
 
-export default app;
+
+export { app, auth, googleAuth };
 

@@ -1,70 +1,76 @@
+"use strict";
+
 import React, { use } from 'react';
-import Link from 'next/link';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import {useRouter}  from 'next/navigation';
+
 // check if user is authenticated
 // if authenticated, show user profile and logout
 // if not authenticated, show login and signup
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 
-const Navbar: React.FC = () => {
+interface AuthProp {
+
+    loginProp: () => void;
+    logoutProp: () => void;
+
+
+}
+
+
+
+const NavBar: React.FC<AuthProp> = ({ loginProp, logoutProp }) => {
+
+    const login = useRef(null);
+    const logout = useRef(null);
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const loginFunction = () => {
+        loginProp();
+        setIsAuthenticated(true);
+    }
+
+    const logoutFunction = () => {
+        logoutProp();
+        setIsAuthenticated(false);
+    }
+
 
     // check if user is authenticated
     // if authenticated, show user profile and logout
     // if not authenticated, show login and signup
 
     useEffect(() => {
-        if (isAuthenticated == true ) {
+        if (isAuthenticated == true) {
             console.log('User is signed in');
-            document.getElementById('login').style.display = 'none';
+            login.current.style.display = 'none';
+            logout.current.style.display = 'block';
         } else {
             console.log('User is signed out');
-            document.getElementById('profile').style.display = 'none';
-            document.getElementById('logout').style.display = 'none';
+
+            logout.current.style.display = 'none';
+            login.current.style.display = 'block';
+
         }
     }, [isAuthenticated]);
 
-
-
-
-
-
     return (
-        <nav className="bg-gray-800 p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <div className="text-white text-lg font-bold">
-                    <Link href="/">
-                        <a>MyApp</a>
-                    </Link>
-                </div>
-                <div className="hidden md:flex space-x-4">
-                    {/* different links based on user authentication */}
-
-                    <Link href="/login">
-                        <a className="text-gray-300 hover:text-white">Login</a>
-                    </Link>
-                    <Link href="/signup">
-                        <a className="text-gray-300 hover:text-white">Signup</a>
-                    </Link>
-                    <Link href="/profile">
-                        <a className="text-gray-300 hover:text-white">Profile</a>
-                    </Link>
-                    <Link href="/logout">
-                        <a className="text-gray-300 hover:text-white">Logout</a>
-                    </Link>
-
-                </div>
-                <div className="md:hidden">
-                    <button className="text-gray-300 hover:text-white focus:outline-none">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
+        <Container >
+            {/* width breakpoints */}
+            <Navbar bg="transparent" variant="dark" style={{ padding: "1rem 1rem" }}>
+                <Nav className="container-fluid">
+                    <Nav.Item className="ms-auto" style={{ float: "right" }}>
+                        <Nav.Link href="#" ref={login} onClick={loginFunction} id="login">Login</Nav.Link>
+                        <Nav.Link href="#" ref={logout} onClick = {logoutFunction} id="logout">Logout</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </Navbar>
+        </Container>
     );
 };
 
-export default Navbar;
+export default NavBar;
