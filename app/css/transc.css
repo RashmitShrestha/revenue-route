@@ -1,0 +1,32 @@
+#transcs {
+
+ 
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    height: 100vh;
+    overflow: scroll;
+    width: 100%;
+}
+
+
+#transcs #trAmt {
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 2px;
+    vertical-align: baseline;
+}
+
+
+
+.trSpa {
+    background-color: red;
+    vertical-align: center;
+    padding: 2px;
+    vertical-align: baseline;
+    width: 100%;
+
+}

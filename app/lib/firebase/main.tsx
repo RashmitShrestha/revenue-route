@@ -2,6 +2,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import {generateTransactionId } from "../calculate"
 
 
 const firebaseConfig = {
@@ -50,6 +51,32 @@ export const signOutUser = async () => {
   }
 };
 
+
+
+// FIRESTORE START HERE
+const db = getFirestore(app);
+
+//collection is users
+//document is uid which comes from auth
+//collection is transactions
+//document is auto generated transaction id
+//fields are amt, desc, type, and uid
+
+
+// Add a new document with a generated id.
+export const addDoc = async (uid: string, amt : number, desc: string, type: string) => {
+  try {
+    const docRef = doc(db, "users", uid, "transactions", generateTransactionId());
+    await setDoc(docRef, {
+      amt: amt,
+      desc: desc,
+      type: type,
+      uid: uid
+    });
+  } catch (error: any) {
+    alert(error.code + error.message);
+  }
+};
 
 export { app, auth, googleAuth };
 
