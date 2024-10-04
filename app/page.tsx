@@ -1,15 +1,15 @@
 "use client";
 
-import TransList from "./components/translist";
-import NavBar from "./components/navbar";
+import TransList from "../components/translist";
+import NavBar from "../components/navbar";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { auth, db, googleAuth, addDoc, deleteTransc } from "./lib/firebase/main";
+import { auth, db, googleAuth, addDoc, deleteTransc } from "../lib/firebase/main";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { signInWithPopup, signOut } from "firebase/auth";
 import Container from 'react-bootstrap/Container';
 
-import {sumUp} from './lib/calculate';
+import {sumUp} from '../lib/calculate';
 
 export interface Transaction {
   amt: number;
@@ -92,7 +92,6 @@ export default function Home() {
           <Container className="p-3">
           { 
             allTranscs.length == 0 ? <h1>No Transactions Yet</h1> : <h1>Total: ${(sumUp(allTranscs))}</h1>
-
           }
           </Container>
         </main>
