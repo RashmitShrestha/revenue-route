@@ -31,16 +31,16 @@ const TransList: React.FC<Props> = ({ transc, delFunc }) => {
                 <center>
 
                     <Row key={transaction.id} id={transaction.id} style={{ padding: '5px', margin: '3px', width: "100%" }}>
-                        <Col id="trAmt" md={3} style={{ backgroundColor: transaction.amt < 0 ? 'coral' : 'lightgreen' }}>
+                        <Col key={transaction.id} id="trAmt" md={3} style={{ backgroundColor: transaction.amt < 0 ? 'coral' : 'lightgreen' }}>
                             {transaction.amt > 0 ? '$' : '-$'}{Math.abs((transaction.amt))}
                         </Col>
-                        <Col className="trSpa" md={4} style={{ backgroundColor: "grey" }}>
+                        <Col key={transaction.id} className="trSpa" md={4} style={{ backgroundColor: "grey" }}>
                             <strong>{transaction.desc}</strong>
                         </Col>
-                        <Col className="trSpa" md={3}>
+                        <Col key={transaction.id} className="trSpa" md={3}>
                             <p>{transaction.type}</p>
                         </Col>
-                        <Col className="trSpa" md={2}>
+                        <Col key={transaction.id} className="trSpa" md={2}>
                             <Button variant="danger" onClick={() => delFunc(transaction.id)}><FaTrashAlt /></Button>
                         </Col>
                     </Row>

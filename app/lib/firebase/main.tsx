@@ -2,7 +2,7 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider} from "firebase/auth";
 import { getFirestore, doc, setDoc, deleteDoc } from "firebase/firestore";
 import {generateTransactionId } from "../calculate"
 
