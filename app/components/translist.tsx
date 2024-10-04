@@ -28,19 +28,19 @@ const TransList: React.FC<Props> = ({ transc, delFunc }) => {
         <Container id="transcs">
             <h2 style={{ position: "sticky" }}>{transactions.length === 0 ? "No Transactions Yet" : "List of Transactions"}</h2>
             {transactions.map(transaction => (
-                <center>
+                <center key = {transaction.id} >
 
-                    <Row key={transaction.id} id={transaction.id} style={{ padding: '5px', margin: '3px', width: "100%" }}>
-                        <Col key={transaction.id} id="trAmt" md={3} style={{ backgroundColor: transaction.amt < 0 ? 'coral' : 'lightgreen' }}>
+                    <Row key={transaction.id} style={{ padding: '5px', margin: '3px', width: "100%" }}>
+                        <Col  id="trAmt" md={3} style={{ backgroundColor: transaction.amt < 0 ? 'coral' : 'lightgreen' }}>
                             {transaction.amt > 0 ? '$' : '-$'}{Math.abs((transaction.amt))}
                         </Col>
-                        <Col key={transaction.id} className="trSpa" md={4} style={{ backgroundColor: "grey" }}>
+                        <Col  className="trSpa" md={4} style={{ backgroundColor: "grey" }}>
                             <strong>{transaction.desc}</strong>
                         </Col>
-                        <Col key={transaction.id} className="trSpa" md={3}>
+                        <Col  className="trSpa" md={3}>
                             <p>{transaction.type}</p>
                         </Col>
-                        <Col key={transaction.id} className="trSpa" md={2}>
+                        <Col  className="trSpa" md={2}>
                             <Button variant="danger" onClick={() => delFunc(transaction.id)}><FaTrashAlt /></Button>
                         </Col>
                     </Row>

@@ -49,7 +49,10 @@ export default function Home() {
   useEffect(() => {
     if (userInfo != null) {
       getData();
+      
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo]);
 
   const asyncloginFunction = async () => {
