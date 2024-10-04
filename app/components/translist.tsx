@@ -1,3 +1,5 @@
+"use strict";
+
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Transaction } from '../page';
@@ -7,40 +9,43 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../css/transc.css';
 
+import { Button } from 'react-bootstrap';
+import { FaTrashAlt } from "react-icons/fa";
 
 interface Props {
-    authed: boolean;
     transc: Transaction[];
+    delFunc: (id: string) => void;
 }
 
-const TransList: React.FC<Props> = ({ transc }) => {
-
+const TransList: React.FC<Props> = ({ transc, delFunc }) => {
     const [transactions, setTransactions] = useState<Transaction[]>(transc);
+
+    useEffect(() => {
+        setTransactions(transc);  // Update transactions when transc prop changes
+    }, [transc]);
 
     return (
         <Container id="transcs">
-            <h2 style={{ position: "sticky" }}>Transaction List</h2>
+            <h2 style={{ position: "sticky" }}>{transactions.length === 0 ? "No Transactions Yet" : "List of Transactions"}</h2>
             {transactions.map(transaction => (
                 <center>
 
-                    <Row id={transaction.id.toString()} style={{ padding: '5px', margin: '3px', width: "100%" }}>
-
-                        <Col id="trAmt" md={1} style={{ backgroundColor: transaction.amount < 0 ? 'coral' : 'lightgreen' }}>
-                            {transaction.amount > 0 ? '$' : '-$'}{Math.abs((transaction.amount))}
+                    <Row key={transaction.id} id={transaction.id} style={{ padding: '5px', margin: '3px', width: "100%" }}>
+                        <Col id="trAmt" md={3} style={{ backgroundColor: transaction.amt < 0 ? 'coral' : 'lightgreen' }}>
+                            {transaction.amt > 0 ? '$' : '-$'}{Math.abs((transaction.amt))}
                         </Col>
-                        <Col className="trSpa" md={6} style={{ backgroundColor: "grey" }}>
-                            <strong>{transaction.name}</strong>
+                        <Col className="trSpa" md={4} style={{ backgroundColor: "grey" }}>
+                            <strong>{transaction.desc}</strong>
                         </Col>
-
                         <Col className="trSpa" md={3}>
-                            <p>{transaction.category}</p>
+                            <p>{transaction.type}</p>
                         </Col>
-
+                        <Col className="trSpa" md={2}>
+                            <Button variant="danger" onClick={() => delFunc(transaction.id)}><FaTrashAlt /></Button>
+                        </Col>
                     </Row>
                 </center>
-
-
-            ))}
+            ))}           
         </Container>
     );
 };

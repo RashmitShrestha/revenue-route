@@ -1,16 +1,13 @@
 #transcs {
-
- 
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
-    height: 100vh;
+    height: 50vh;
     overflow: scroll;
     width: 100%;
 }
-
 
 #transcs #trAmt {
     text-align: center;
@@ -19,8 +16,6 @@
     padding: 2px;
     vertical-align: baseline;
 }
-
-
 
 .trSpa {
     background-color: red;
