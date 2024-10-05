@@ -1,12 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&family=Trade+Winds&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Protest+Strike&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Trade+Winds&display=swap'); */
 
 :root {
-  --background: #fff;
-  --foreground: #171717;
+  --ac: #67eeee;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
+.bodyClass {
+  background-color: rgb(15, 15, 15);
+  
   font-family: "Fredoka", sans-serif;
+  color: white; /* You can adjust this as needed */
 }
+
+
+
+.h1 {
+  font-family: "Trade Winds", system-ui;
+  color: var(--ac) !important;
+
+}
+
+Button {
+  background-color: var(--ac) !important; 
+  color: black !important; /* Neon cyan text color */
+  border: none !important; /* Border with neon cyan color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: all 0.3s ease; /* Smooth transition for effects */
+  text-align: center; /* Center align text */
+  font-family: "Source Code Pro", monospace;
+  font-weight: bold !important;
+
+}
+
+Button:hover {
+  color: white; /* Change text color to white on hover */
+  background-color: #eee !important; 
+  filter: blur(2px); /* Add blur effect on hover */
+}
+
+Button:active {
+  background-color: #67eeee; /* Change background color to brighter cyan when clicked */
+  color: white; /* Change text color to white when clicked */
+  transform: scale(0.95); /* Slightly scale down button when clicked */
+}
+

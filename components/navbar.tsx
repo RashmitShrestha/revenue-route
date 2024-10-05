@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { IoAddCircleOutline } from "react-icons/io5";
 
 interface AuthProp {
     loginProp: () => void;
@@ -70,20 +71,20 @@ const NavBar: React.FC<AuthProp> = ({ loginProp, logoutProp, addTransc }) => {
         // make navbar with floating right
         // if user is authenticated, show user profile and logout
         // if not authenticated, show login and signup
-        <Navbar bg="light" expand="lg">
+        <Navbar  expand="lg" style={{ backgroundColor: "black", padding: "1rem"}}>
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#"><strong className="h2">Revenue Route</strong> </Nav.Link>
+                        <Nav.Link href="#"><strong className="h1">Revenue Route</strong> </Nav.Link>
                     </Nav>
                     <Nav>
 
-                        <Button ref={login} onClick={loginFunction} className="m-1">Login</Button>
-                        <Button ref={logout} onClick={logoutFunction} className="m-1">Logout</Button>
+                        <Button ref={login} onClick={loginFunction} className="m-1">LOGIN</Button>
+                        <Button ref={logout} onClick={logoutFunction} className="m-1">LOG OUT</Button>
 
                         <Button className="m-1" variant="primary" onClick={handleShow} ref={addBtn}>
-                            Add Transactions
+                        <IoAddCircleOutline />
                         </Button>
 
                         <Modal show={show} onHide={handleClose}>

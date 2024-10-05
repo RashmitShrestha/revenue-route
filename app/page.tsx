@@ -1,15 +1,20 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 import TransList from "../components/translist";
 import NavBar from "../components/navbar";
-import { getDocs, collection, query, where } from "firebase/firestore";
-import { useState, useEffect } from "react";
-import { auth, db, googleAuth, addDoc, deleteTransc } from "../lib/firebase/main";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { signInWithPopup, signOut } from "firebase/auth";
-import Container from 'react-bootstrap/Container';
 
-import {sumUp} from '../lib/calculate';
+import NextSteps from "@/components/nextsteps";
+import { sumUp } from "@/lib/calculate";
+
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { auth, db, googleAuth, addDoc, deleteTransc } from "../lib/firebase/main";
+import { signInWithPopup, signOut } from "firebase/auth";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Container, Row, Col } from 'react-bootstrap';
+
 
 export interface Transaction {
   amt: number;
@@ -49,7 +54,7 @@ export default function Home() {
   useEffect(() => {
     if (userInfo != null) {
       getData();
-      
+
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -79,21 +84,17 @@ export default function Home() {
 
   return (
     <body>
-
       <header>
         {/* check if user is returned */}
         <NavBar loginProp={asyncloginFunction} logoutProp={logoutFunction} addTransc={docPassedAsProp} />
       </header>
 
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <TransList transc={allTranscs} delFunc={deleteProp} />
+      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 m-3)]">
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start p-3">
 
-          <Container className="p-3">
-          { 
-            allTranscs.length == 0 ? <h1>No Transactions Yet</h1> : <h1>Total: ${(sumUp(allTranscs))}</h1>
-          }
-          </Container>
+        <TransList transc={allTranscs} delFunc={deleteProp} />
+
+          <NextSteps totalSum={sumUp(allTranscs)} userInfo={userInfo != null} />
         </main>
       </div>
     </body>
