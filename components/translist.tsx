@@ -26,7 +26,7 @@ const TransList: React.FC<Props> = ({ transc, delFunc }) => {
 
     return (
         <Container id="transcs" className=" p-3" fluid>
-            <h2 style={{ position: "sticky" , marginBottom:"14px" }}><strong>{transactions.length === 0 ? "No Transactions Yet!" : "List of Transactions:"}</strong></h2>
+            <h2 style={{ position: "sticky" , marginBottom:"40px" }}><strong>{transactions.length === 0 ? "No Transactions Yet!" : "List of Transactions:"}</strong></h2>
             {transactions.map(transaction => (
                 <center key = {transaction.id} >
 

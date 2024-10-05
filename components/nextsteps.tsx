@@ -9,6 +9,8 @@ import { useState } from "react";
 
 import CompCharts from './compChart';
 
+import '../css/ns.css';
+
 interface Props {
     totalSum: number;
     userInfo: boolean;
@@ -52,16 +54,22 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
     }
         , [totalSum]);
     return (
-        <Container className="p-3">
+        <Container className="p-3 mt-5" id="nextCont">
 
             {userInfo ?
                 <div>
-                    <h1>Next Steps</h1>
-                    <h3>Current Balance: ${totalSum}</h3>
+                    <h1>Next Steps!</h1>
+                    <center>
+                    <h3 style={{fontSize:"50px", fontWeight:"bolder", margin:"50px 10px"}}>Current Balance: <b style={{color: "#67eeee"}}> {totalSum > 0 ? '$' : '-$'}{Math.abs(totalSum)}</b></h3>
+
+                    </center>
                     <h4>{totalSum > 0 ? "You have a positive balance! Press the button below to find some companies to invest in!" : "You have a negative balance, be mindful of what you spend and consider getting a loan, good luck!"}</h4>
 
+                    {profitShow && (
+                        <Container fluid>
 
-                    <Button onClick={async () => {
+                            <center>
+                            <Button style={{fontSize:"30px",  margin:"30px 0px 70px 0px"}} onClick={async () => {
                                 const tempComp: CompanyDataInterface[] = [];
                                 const companies = handleInvest();
 
@@ -72,21 +80,16 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
 
                                 setCompanyData(tempComp);
                                 setProfitShow(true);
-                                console.log(companyData);
 
-                            }}>Invest</Button>
-                    {profitShow && (
-
-
-                        <Container >
-
-                          
-
-                            <Row>
+                            }}>Click to See Some Options!</Button>
+                            </center>
+                            
+                            <center>
+                            <Row className="mb-5">
                                 {companyData.map((comps: CompanyDataInterface) => (
                                     <Col md="4" key={comps.companyName}>
-                                        <Card style={{ width: '18rem' }}>
-                                            <Card.Img variant="top" src={comps.image} style={{ height: 'auto', width: "auto" }} />
+                                        <Card style={{ width: '18rem' , backgroundColor: "#ccc"}}>
+                                            <Card.Img variant="top" src={comps.image} style={{ height: 'auto', width: "auto" }} alt={`${comps.companyName} logo`} title={`${comps.companyName} logo`} />
 
                                             <Card.Body>
                                                 <Card.Title>Card Title</Card.Title>
@@ -101,6 +104,8 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
                                     </Col>
                                 ))}
                             </Row>
+                           </center>
+
 
                             <CompCharts stockPrices={companyData} />
                         </Container>
@@ -110,8 +115,8 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
                 :
 
                 <div>
-                    <h1>Next Steps</h1>
-                    <h2>Sign in to see your balance and next steps</h2>
+                    <h1>Next Steps!</h1>
+                    <h2>Sign in to see your balance and next steps!</h2>
                 </div>
             }
         </Container>

@@ -8,12 +8,27 @@
 }
 
 .bodyClass {
-  background-color: rgb(15, 15, 15);
-  
+  background: radial-gradient(circle, #1b1b1b, #070707);
   font-family: "Fredoka", sans-serif;
   color: white; /* You can adjust this as needed */
+
+     /* add scroll bar custom too */
+     scrollbar-width: thin;
+     scrollbar-color: #67eeee #202020;
+     scroll-behavior: smooth;
 }
 
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #202020;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #67eeee;
+  border-radius: 10px;
+}
 
 
 .h1 {

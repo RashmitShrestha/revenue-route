@@ -7,15 +7,16 @@
     height: 50vh;
     overflow: scroll;
     overflow-x: hidden;
-    width: 100%;
+    width: 90%;
     background-color: #202020;
 
     /* add scroll bar custom too */
     scrollbar-width: thin;
-    scrollbar-color: #67eeee #000;
+    scrollbar-color: #67eeee #202020;
     scroll-behavior: smooth;
 
-
+    font-size:17px;
+    
 }
 
 #transcs #trAmt {
@@ -33,5 +34,4 @@
     padding: 2px;
     vertical-align: baseline;
     width: 100%;
-
 }

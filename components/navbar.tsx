@@ -87,11 +87,11 @@ const NavBar: React.FC<AuthProp> = ({ loginProp, logoutProp, addTransc }) => {
                         <IoAddCircleOutline />
                         </Button>
 
-                        <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
+                        <Modal show={show} onHide={handleClose} >
+                            <Modal.Header closeButton style={{backgroundColor: "black", color:"white"}}>
                                 <Modal.Title>Modal heading</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body style={{backgroundColor: "black", color:"white"}}>
                                 <Form>
 
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -117,7 +117,7 @@ const NavBar: React.FC<AuthProp> = ({ loginProp, logoutProp, addTransc }) => {
                                 </Form>
 
                             </Modal.Body>
-                            <Modal.Footer>
+                            <Modal.Footer style={{backgroundColor: "black", color:"white"}}>
                                 <Button variant="secondary" onClick={handleClose}>
                                     Close
                                 </Button>
