@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Introduction
 
-## Getting Started
+Hello! Welcome to Revenue Route! A financial tracker web app that lets you manage your transactions, see how much you spend on different categories of transactions, and gives you options to become better at managing your hard earned and carefully spent money
 
-First, run the development server:
+## Installing
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Feel free to download the app through cloning the repository to your local machine or any other methods you prefer
+
+Then run ```npm install``` to download all necessary packages through npm
+
+After, go to ```.env``` and replace the private information with your own
+
+After, run ```npm run dev``` to start the local development and get ready to save some money!
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Full-Stack Design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+For the front end I used React.js, along with React-Bootstrap, and Chart.js to draw graphs
 
-## Learn More
+Then for the backend, I used Firebase for both the database and authentication, which is harmoniously paired together, and the use of GET fetch requests to the Financial API
 
-To learn more about Next.js, take a look at the following resources:
+This is wrapped around Next.js with Typescript, as an added challenge 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Even though my inital vision was different, this project has been a joy to work on, and I hope you'll be able to feel that joy too
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Thanks a ton!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

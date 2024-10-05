@@ -28,7 +28,6 @@ const TransList: React.FC<Props> = ({ transc, delFunc }) => {
     return (
 
         <Container >
-
             <Row className="p-3" style={{   verticalAlign: "baseline"}}>
                 <Col md="8" className="p-3">
                     <Container  className="transcs p-3" fluid>

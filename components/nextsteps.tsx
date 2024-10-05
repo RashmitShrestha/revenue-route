@@ -92,7 +92,6 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
                                                 <Card.Img variant="top" src={comps.image} style={{ height: 'auto', width: "auto" }} alt={`${comps.companyName} logo`} title={`${comps.companyName} logo`} />
 
                                                 <Card.Body>
-                                                    <Card.Title>Card Title</Card.Title>
                                                     <Card.Subtitle className="mb-2 text-muted">{comps.companyName}</Card.Subtitle>
 
                                                     <Card.Text>
