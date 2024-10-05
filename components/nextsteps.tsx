@@ -62,8 +62,8 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
                     <center>
                     <h3 style={{fontSize:"50px", fontWeight:"bolder", margin:"50px 10px"}}>Current Balance: <b style={{color: "#67eeee"}}> {totalSum > 0 ? '$' : '-$'}{Math.abs(totalSum)}</b></h3>
 
-                    </center>
                     <h4>{totalSum > 0 ? "You have a positive balance! Press the button below to find some companies to invest in!" : "You have a negative balance, be mindful of what you spend and consider getting a loan, good luck!"}</h4>
+                    </center>
 
                     {profitShow && (
                         <Container fluid>
