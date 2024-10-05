@@ -13,7 +13,6 @@ export function sumUp(transactions: Transaction[]): number {
     transactions.forEach((transaction) => {
         sum += parseFloat(transaction.amt.toString());  
     });
-
     // console.log(sum)
     return parseFloat(sum.toFixed(2));  
 }

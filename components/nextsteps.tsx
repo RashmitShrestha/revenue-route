@@ -54,57 +54,57 @@ export default function NextSteps({ totalSum, userInfo }: Props) {
     }
         , [totalSum]);
     return (
-        <Container className="p-3 mt-5" id="nextCont">
+        <Container className="p-3 mt-4" id="nextCont">
 
             {userInfo ?
                 <div>
                     <h1>Next Steps!</h1>
                     <center>
-                    <h3 style={{fontSize:"50px", fontWeight:"bolder", margin:"50px 10px"}}>Current Balance: <b style={{color: "#67eeee"}}> {totalSum > 0 ? '$' : '-$'}{Math.abs(totalSum)}</b></h3>
+                        <h3 style={{ fontSize: "50px", fontWeight: "bolder", margin: "50px 10px" }}>Current Balance: <b style={{ color: "#67eeee" }}> {totalSum > 0 ? '$' : '-$'}{Math.abs(totalSum)}</b></h3>
 
-                    <h4>{totalSum > 0 ? "You have a positive balance! Press the button below to find some companies to invest in!" : "You have a negative balance, be mindful of what you spend and consider getting a loan, good luck!"}</h4>
+                        <h4>{totalSum > 0 ? "You have a positive balance! Press the button below to find some companies to invest in!" : "You have a negative balance, be mindful of what you spend and consider getting a loan, good luck!"}</h4>
                     </center>
 
                     {profitShow && (
                         <Container fluid>
 
                             <center>
-                            <Button style={{fontSize:"30px",  margin:"30px 0px 70px 0px"}} onClick={async () => {
-                                const tempComp: CompanyDataInterface[] = [];
-                                const companies = handleInvest();
+                                <Button style={{ fontSize: "30px", margin: "30px 0px 70px 0px" }} onClick={async () => {
+                                    const tempComp: CompanyDataInterface[] = [];
+                                    const companies = handleInvest();
 
-                                await Promise.all(companies.map(async (company) => {
-                                    const data = await fetchCompanyData(company);
-                                    tempComp.push(data);  // Push data to tempComp after resolving
-                                }));
+                                    await Promise.all(companies.map(async (company) => {
+                                        const data = await fetchCompanyData(company);
+                                        tempComp.push(data);  // Push data to tempComp after resolving
+                                    }));
 
-                                setCompanyData(tempComp);
-                                setProfitShow(true);
+                                    setCompanyData(tempComp);
+                                    setProfitShow(true);
 
-                            }}>Click to See Some Options!</Button>
+                                }}>Click to See Some Options!</Button>
                             </center>
-                            
+
                             <center>
-                            <Row className="mb-5">
-                                {companyData.map((comps: CompanyDataInterface) => (
-                                    <Col md="4" key={comps.companyName}>
-                                        <Card style={{ width: '18rem' , backgroundColor: "#ccc"}}>
-                                            <Card.Img variant="top" src={comps.image} style={{ height: 'auto', width: "auto" }} alt={`${comps.companyName} logo`} title={`${comps.companyName} logo`} />
+                                <Row className="mb-5">
+                                    {companyData.map((comps: CompanyDataInterface) => (
+                                        <Col md="4" key={comps.companyName}>
+                                            <Card style={{ width: '18rem', backgroundColor: "#ccc" }}>
+                                                <Card.Img variant="top" src={comps.image} style={{ height: 'auto', width: "auto" }} alt={`${comps.companyName} logo`} title={`${comps.companyName} logo`} />
 
-                                            <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">{comps.companyName}</Card.Subtitle>
+                                                <Card.Body>
+                                                    <Card.Title>Card Title</Card.Title>
+                                                    <Card.Subtitle className="mb-2 text-muted">{comps.companyName}</Card.Subtitle>
 
-                                                <Card.Text>
-                                                    ${comps.price}
-                                                </Card.Text>
+                                                    <Card.Text>
+                                                        Price:  ${comps.price}
+                                                    </Card.Text>
 
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                ))}
-                            </Row>
-                           </center>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </center>
 
 
                             <CompCharts stockPrices={companyData} />

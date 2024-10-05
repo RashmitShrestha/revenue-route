@@ -29,16 +29,15 @@ export default function CompCharts({ stockPrices }: Prop) {
     return (
         <div>
             <h1>Stock Price</h1>
-
             <Bar
                 data={{
-                    labels: stockPrices.map((company) => company.companyName), 
+                    labels: stockPrices.map((company) => company.companyName),
                     datasets: [
                         {
                             label: "Stock Price",
-                            data: stockPrices.map((company) => company.price), 
-                            backgroundColor: "rgba(75, 192, 192, 0.2)", 
-                            borderColor: "rgb(75, 192, 192)", 
+                            data: stockPrices.map((company) => company.price),
+                            backgroundColor: "rgba(75, 192, 192, 0.2)",
+                            borderColor: "rgb(75, 192, 192)",
                             borderWidth: 1,
                         },
                     ],

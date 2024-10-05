@@ -1,4 +1,4 @@
-#transcs {
+.transcs {
     border-radius: 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
@@ -7,7 +7,7 @@
     height: 50vh;
     overflow: scroll;
     overflow-x: hidden;
-    width: 90%;
+    width: 10%;
     background-color: #202020;
 
     /* add scroll bar custom too */
@@ -16,10 +16,11 @@
     scroll-behavior: smooth;
 
     font-size:17px;
-    
+    vertical-align: baseline;
+
 }
 
-#transcs #trAmt {
+.transcs #trAmt {
     text-align: center;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
